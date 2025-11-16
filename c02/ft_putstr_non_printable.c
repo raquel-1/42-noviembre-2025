@@ -6,7 +6,7 @@
 /*   By: raqroca- <raqroca-@student.42.madrid.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 18:26:31 by raqroca-          #+#    #+#             */
-/*   Updated: 2025/11/16 19:32:18 by raqroca-         ###   ########.fr       */
+/*   Updated: 2025/11/16 21:39:54 by raqroca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	ft_putstr_non_printable(char *str)
 {
-	int	i;
-	char	hex[16] = "0123456789abcdef";
+	int		i;
+	char	*hex;
 
+	hex = "0123456789abcdef";
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] < 32 || str[i] > 126)
+		if ((unsigned char)str[i] < 32 || (unsigned char)str[i] > 126)
 		{
 			write(1, "\\", 1);
 			write(1, &hex[(unsigned char)str[i] / 16], 1);
@@ -34,7 +35,7 @@ void	ft_putstr_non_printable(char *str)
 	}
 }
 /*
-int main(void)
+int	main(void)
 {
     char str[] = "Coucou\ntu vas bien ?";
     ft_putstr_non_printable(str);
